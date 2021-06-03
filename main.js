@@ -15,13 +15,6 @@ function setup()
     poseNet = ml5.poseNet(video, modelLoaded);
     poseNet.on('pose', gotPoses);
 }
-function draw()
-{
-    background('#5D5C5C');
-    fill('#F90093');
-    stroke('#F90093');
-    square(noseX,noseY,difference);
-}
 function modelLoaded()
 {
     console.log('PoseNet is Initialised ');
@@ -37,6 +30,13 @@ function gotPoses(results)
         leftwristX = results[0].pose.leftwrist.x;
         rightwristX = results[0].pose.rightwrist.x;
         difference = floor( leftwristX - rightwrist )
-        console.log("leftwrist = " + leftwristX + "rightwrist = " + rightwristX + "difference = " + difference);
+        console.log("leftWrist = " + leftwristX + "rightWrist = " + rightwristX + "difference = " + difference);
     }
+}
+function draw()
+{
+    background('#5D5C5C');
+    fill('#F90093');
+    stroke('#F90093');
+    square(noseX,noseY,difference);
 }
